@@ -9,6 +9,9 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SuporteRouteImport } from './routes/suporte'
+import { Route as PerfilRouteImport } from './routes/perfil'
+import { Route as FilaRouteImport } from './routes/fila'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AdminRouteImport } from './routes/admin'
@@ -21,6 +24,21 @@ import { Route as AdminFilaRouteImport } from './routes/admin.fila'
 import { Route as AdminConfiguracoesRouteImport } from './routes/admin.configuracoes'
 import { Route as AdminCadastrosRouteImport } from './routes/admin.cadastros'
 
+const SuporteRoute = SuporteRouteImport.update({
+  id: '/suporte',
+  path: '/suporte',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PerfilRoute = PerfilRouteImport.update({
+  id: '/perfil',
+  path: '/perfil',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FilaRoute = FilaRouteImport.update({
+  id: '/fila',
+  path: '/fila',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DashboardRoute = DashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
@@ -82,6 +100,9 @@ export interface FileRoutesByFullPath {
   '/admin': typeof AdminRouteWithChildren
   '/auth': typeof AuthRoute
   '/dashboard': typeof DashboardRoute
+  '/fila': typeof FilaRoute
+  '/perfil': typeof PerfilRoute
+  '/suporte': typeof SuporteRoute
   '/admin/cadastros': typeof AdminCadastrosRoute
   '/admin/configuracoes': typeof AdminConfiguracoesRoute
   '/admin/fila': typeof AdminFilaRoute
@@ -94,6 +115,9 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/dashboard': typeof DashboardRoute
+  '/fila': typeof FilaRoute
+  '/perfil': typeof PerfilRoute
+  '/suporte': typeof SuporteRoute
   '/admin/cadastros': typeof AdminCadastrosRoute
   '/admin/configuracoes': typeof AdminConfiguracoesRoute
   '/admin/fila': typeof AdminFilaRoute
@@ -108,6 +132,9 @@ export interface FileRoutesById {
   '/admin': typeof AdminRouteWithChildren
   '/auth': typeof AuthRoute
   '/dashboard': typeof DashboardRoute
+  '/fila': typeof FilaRoute
+  '/perfil': typeof PerfilRoute
+  '/suporte': typeof SuporteRoute
   '/admin/cadastros': typeof AdminCadastrosRoute
   '/admin/configuracoes': typeof AdminConfiguracoesRoute
   '/admin/fila': typeof AdminFilaRoute
@@ -123,6 +150,9 @@ export interface FileRouteTypes {
     | '/admin'
     | '/auth'
     | '/dashboard'
+    | '/fila'
+    | '/perfil'
+    | '/suporte'
     | '/admin/cadastros'
     | '/admin/configuracoes'
     | '/admin/fila'
@@ -135,6 +165,9 @@ export interface FileRouteTypes {
     | '/'
     | '/auth'
     | '/dashboard'
+    | '/fila'
+    | '/perfil'
+    | '/suporte'
     | '/admin/cadastros'
     | '/admin/configuracoes'
     | '/admin/fila'
@@ -148,6 +181,9 @@ export interface FileRouteTypes {
     | '/admin'
     | '/auth'
     | '/dashboard'
+    | '/fila'
+    | '/perfil'
+    | '/suporte'
     | '/admin/cadastros'
     | '/admin/configuracoes'
     | '/admin/fila'
@@ -162,10 +198,34 @@ export interface RootRouteChildren {
   AdminRoute: typeof AdminRouteWithChildren
   AuthRoute: typeof AuthRoute
   DashboardRoute: typeof DashboardRoute
+  FilaRoute: typeof FilaRoute
+  PerfilRoute: typeof PerfilRoute
+  SuporteRoute: typeof SuporteRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/suporte': {
+      id: '/suporte'
+      path: '/suporte'
+      fullPath: '/suporte'
+      preLoaderRoute: typeof SuporteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/perfil': {
+      id: '/perfil'
+      path: '/perfil'
+      fullPath: '/perfil'
+      preLoaderRoute: typeof PerfilRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fila': {
+      id: '/fila'
+      path: '/fila'
+      fullPath: '/fila'
+      preLoaderRoute: typeof FilaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/dashboard': {
       id: '/dashboard'
       path: '/dashboard'
@@ -273,6 +333,9 @@ const rootRouteChildren: RootRouteChildren = {
   AdminRoute: AdminRouteWithChildren,
   AuthRoute: AuthRoute,
   DashboardRoute: DashboardRoute,
+  FilaRoute: FilaRoute,
+  PerfilRoute: PerfilRoute,
+  SuporteRoute: SuporteRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
