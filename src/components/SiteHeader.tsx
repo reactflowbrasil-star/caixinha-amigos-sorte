@@ -1,10 +1,13 @@
 import { Link, useNavigate } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/useAuth";
-import { PiggyBank, LogOut } from "lucide-react";
+import { useUserRole } from "@/hooks/useUserRole";
+import { NotificationBell } from "@/components/NotificationBell";
+import { PiggyBank, LogOut, Shield } from "lucide-react";
 
 export function SiteHeader() {
   const { user, signOut } = useAuth();
+  const { isAdmin } = useUserRole();
   const navigate = useNavigate();
 
   return (
@@ -19,15 +22,15 @@ export function SiteHeader() {
           </span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-muted-foreground">
-          <a href="#como-funciona" className="hover:text-foreground transition-colors">Como funciona</a>
-          <a href="#regras" className="hover:text-foreground transition-colors">Regras</a>
-          <a href="#transparencia" className="hover:text-foreground transition-colors">Transparência</a>
-        </nav>
-
         <div className="flex items-center gap-2">
           {user ? (
             <>
+              <NotificationBell />
+              {isAdmin && (
+                <Button variant="ghost" size="sm" onClick={() => navigate({ to: "/admin" })}>
+                  <Shield className="h-4 w-4 mr-1" /> Admin
+                </Button>
+              )}
               <Button variant="ghost" size="sm" onClick={() => navigate({ to: "/dashboard" })}>
                 Painel
               </Button>
