@@ -51,27 +51,16 @@ function Notificacoes() {
     }
     setSending(true);
     try {
-      if (form.target === "all") {
-        const { error } = await supabase.from("notifications").insert({
-          title: form.title,
-          body: form.body,
-          type: form.type,
-          user_id: null,
-          created_by: user?.id,
-        });
-        if (error) throw error;
-        toast.success("Aviso enviado para todos os usuários");
-      } else {
-        const { error } = await supabase.from("notifications").insert({
-          title: form.title,
-          body: form.body,
-          type: form.type,
-          user_id: form.target,
-          created_by: user?.id,
-        });
-        if (error) throw error;
-        toast.success("Aviso enviado");
-      }
+      const payload: any = {
+        title: form.title,
+        body: form.body,
+        type: form.type,
+        user_id: form.target === "all" ? null : form.target,
+        created_by: user?.id,
+      };
+      const { error } = await supabase.from("notifications").insert(payload);
+      if (error) throw error;
+      toast.success(form.target === "all" ? "Aviso enviado para todos" : "Aviso enviado");
       setForm({ title: "", body: "", type: "info", target: "all" });
       void load();
     } catch (e: any) {

@@ -15,7 +15,8 @@ export const Route = createFileRoute("/admin")({
   component: AdminLayout,
 });
 
-const NAV = [
+type NavItem = { to: string; label: string; icon: any; exact?: boolean };
+const NAV: NavItem[] = [
   { to: "/admin", label: "Visão geral", icon: LayoutDashboard, exact: true },
   { to: "/admin/cadastros", label: "Cadastros", icon: Users },
   { to: "/admin/fila", label: "Fila / Posições", icon: ListOrdered },
@@ -23,7 +24,7 @@ const NAV = [
   { to: "/admin/notificacoes", label: "Notificações", icon: BellIcon },
   { to: "/admin/relatorios", label: "Relatórios", icon: FileDown },
   { to: "/admin/configuracoes", label: "Configurações", icon: Settings },
-] as const;
+];
 
 function AdminLayout() {
   const { user, loading: authLoading, signOut } = useAuth();
@@ -105,7 +106,7 @@ function SidebarContents() {
           return (
             <Link
               key={n.to}
-              to={n.to}
+              to={n.to as any}
               className={`flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-colors ${
                 active
                   ? "bg-primary/10 text-primary font-semibold"
