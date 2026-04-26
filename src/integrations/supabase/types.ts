@@ -14,6 +14,42 @@ export type Database = {
   }
   public: {
     Tables: {
+      app_settings: {
+        Row: {
+          admin_whatsapp: string | null
+          daily_amount: number
+          id: number
+          pix_copy_paste: string | null
+          pix_key: string | null
+          pix_key_type: string | null
+          pix_qr_url: string | null
+          updated_at: string
+          updated_by: string | null
+        }
+        Insert: {
+          admin_whatsapp?: string | null
+          daily_amount?: number
+          id?: number
+          pix_copy_paste?: string | null
+          pix_key?: string | null
+          pix_key_type?: string | null
+          pix_qr_url?: string | null
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Update: {
+          admin_whatsapp?: string | null
+          daily_amount?: number
+          id?: number
+          pix_copy_paste?: string | null
+          pix_key?: string | null
+          pix_key_type?: string | null
+          pix_qr_url?: string | null
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Relationships: []
+      }
       contributions: {
         Row: {
           amount: number
@@ -53,6 +89,75 @@ export type Database = {
         }
         Relationships: []
       }
+      messages: {
+        Row: {
+          body: string
+          created_at: string
+          from_user_id: string
+          id: string
+          read_at: string | null
+          ticket_id: string | null
+          to_admins: boolean
+          to_user_id: string | null
+        }
+        Insert: {
+          body: string
+          created_at?: string
+          from_user_id: string
+          id?: string
+          read_at?: string | null
+          ticket_id?: string | null
+          to_admins?: boolean
+          to_user_id?: string | null
+        }
+        Update: {
+          body?: string
+          created_at?: string
+          from_user_id?: string
+          id?: string
+          read_at?: string | null
+          ticket_id?: string | null
+          to_admins?: boolean
+          to_user_id?: string | null
+        }
+        Relationships: []
+      }
+      notifications: {
+        Row: {
+          body: string
+          created_at: string
+          created_by: string | null
+          id: string
+          link: string | null
+          read_at: string | null
+          title: string
+          type: Database["public"]["Enums"]["notif_type"]
+          user_id: string | null
+        }
+        Insert: {
+          body: string
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          link?: string | null
+          read_at?: string | null
+          title: string
+          type?: Database["public"]["Enums"]["notif_type"]
+          user_id?: string | null
+        }
+        Update: {
+          body?: string
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          link?: string | null
+          read_at?: string | null
+          title?: string
+          type?: Database["public"]["Enums"]["notif_type"]
+          user_id?: string | null
+        }
+        Relationships: []
+      }
       payouts: {
         Row: {
           active_participants: number
@@ -89,6 +194,11 @@ export type Database = {
       profiles: {
         Row: {
           accepted_terms_at: string
+          avatar_url: string | null
+          banned_at: string | null
+          banned_reason: string | null
+          cpf: string | null
+          cpf_valid: boolean
           created_at: string
           full_name: string
           has_received: boolean
@@ -96,6 +206,7 @@ export type Database = {
           invite_code: string
           invited_by: string | null
           is_active: boolean
+          is_banned: boolean
           phone: string | null
           receive_position: number | null
           received_at: string | null
@@ -103,6 +214,11 @@ export type Database = {
         }
         Insert: {
           accepted_terms_at?: string
+          avatar_url?: string | null
+          banned_at?: string | null
+          banned_reason?: string | null
+          cpf?: string | null
+          cpf_valid?: boolean
           created_at?: string
           full_name: string
           has_received?: boolean
@@ -110,6 +226,7 @@ export type Database = {
           invite_code?: string
           invited_by?: string | null
           is_active?: boolean
+          is_banned?: boolean
           phone?: string | null
           receive_position?: number | null
           received_at?: string | null
@@ -117,6 +234,11 @@ export type Database = {
         }
         Update: {
           accepted_terms_at?: string
+          avatar_url?: string | null
+          banned_at?: string | null
+          banned_reason?: string | null
+          cpf?: string | null
+          cpf_valid?: boolean
           created_at?: string
           full_name?: string
           has_received?: boolean
@@ -124,10 +246,83 @@ export type Database = {
           invite_code?: string
           invited_by?: string | null
           is_active?: boolean
+          is_banned?: boolean
           phone?: string | null
           receive_position?: number | null
           received_at?: string | null
           updated_at?: string
+        }
+        Relationships: []
+      }
+      support_tickets: {
+        Row: {
+          assigned_to: string | null
+          created_at: string
+          description: string
+          id: string
+          priority: Database["public"]["Enums"]["ticket_priority"]
+          status: Database["public"]["Enums"]["ticket_status"]
+          subject: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          assigned_to?: string | null
+          created_at?: string
+          description: string
+          id?: string
+          priority?: Database["public"]["Enums"]["ticket_priority"]
+          status?: Database["public"]["Enums"]["ticket_status"]
+          subject: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          assigned_to?: string | null
+          created_at?: string
+          description?: string
+          id?: string
+          priority?: Database["public"]["Enums"]["ticket_priority"]
+          status?: Database["public"]["Enums"]["ticket_status"]
+          subject?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      user_documents: {
+        Row: {
+          created_at: string
+          document_type: Database["public"]["Enums"]["document_type"]
+          file_path: string
+          id: string
+          notes: string | null
+          reviewed_at: string | null
+          reviewed_by: string | null
+          status: Database["public"]["Enums"]["document_status"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          document_type: Database["public"]["Enums"]["document_type"]
+          file_path: string
+          id?: string
+          notes?: string | null
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          status?: Database["public"]["Enums"]["document_status"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          document_type?: Database["public"]["Enums"]["document_type"]
+          file_path?: string
+          id?: string
+          notes?: string | null
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          status?: Database["public"]["Enums"]["document_status"]
+          user_id?: string
         }
         Relationships: []
       }
@@ -167,6 +362,11 @@ export type Database = {
     }
     Enums: {
       app_role: "admin" | "user"
+      document_status: "pending" | "approved" | "rejected"
+      document_type: "rg" | "cnh" | "address_proof" | "payment_proof" | "other"
+      notif_type: "info" | "warning" | "success" | "alert"
+      ticket_priority: "low" | "normal" | "high"
+      ticket_status: "open" | "in_progress" | "closed"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -295,6 +495,11 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["admin", "user"],
+      document_status: ["pending", "approved", "rejected"],
+      document_type: ["rg", "cnh", "address_proof", "payment_proof", "other"],
+      notif_type: ["info", "warning", "success", "alert"],
+      ticket_priority: ["low", "normal", "high"],
+      ticket_status: ["open", "in_progress", "closed"],
     },
   },
 } as const
