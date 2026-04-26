@@ -12,9 +12,9 @@ import { toast } from "sonner";
 import { PiggyBank, Loader2 } from "lucide-react";
 
 const searchSchema = z.object({
-  mode: z.enum(["signin", "signup"]).optional().default("signin"),
+  mode: z.enum(["signin", "signup"]).optional(),
   invite: z.string().optional(),
-});
+}).optional().default({});
 
 export const Route = createFileRoute("/auth")({
   validateSearch: (s) => searchSchema.parse(s),
