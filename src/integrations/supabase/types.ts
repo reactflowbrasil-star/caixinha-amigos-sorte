@@ -200,6 +200,8 @@ export type Database = {
           cpf: string | null
           cpf_valid: boolean
           created_at: string
+          face_match_score: number | null
+          face_verified: boolean
           full_name: string
           has_received: boolean
           id: string
@@ -210,6 +212,7 @@ export type Database = {
           phone: string | null
           receive_position: number | null
           received_at: string | null
+          selfie_url: string | null
           updated_at: string
         }
         Insert: {
@@ -220,6 +223,8 @@ export type Database = {
           cpf?: string | null
           cpf_valid?: boolean
           created_at?: string
+          face_match_score?: number | null
+          face_verified?: boolean
           full_name: string
           has_received?: boolean
           id: string
@@ -230,6 +235,7 @@ export type Database = {
           phone?: string | null
           receive_position?: number | null
           received_at?: string | null
+          selfie_url?: string | null
           updated_at?: string
         }
         Update: {
@@ -240,6 +246,8 @@ export type Database = {
           cpf?: string | null
           cpf_valid?: boolean
           created_at?: string
+          face_match_score?: number | null
+          face_verified?: boolean
           full_name?: string
           has_received?: boolean
           id?: string
@@ -250,6 +258,7 @@ export type Database = {
           phone?: string | null
           receive_position?: number | null
           received_at?: string | null
+          selfie_url?: string | null
           updated_at?: string
         }
         Relationships: []
@@ -363,7 +372,13 @@ export type Database = {
     Enums: {
       app_role: "admin" | "user"
       document_status: "pending" | "approved" | "rejected"
-      document_type: "rg" | "cnh" | "address_proof" | "payment_proof" | "other"
+      document_type:
+        | "rg"
+        | "cnh"
+        | "address_proof"
+        | "payment_proof"
+        | "other"
+        | "selfie"
       notif_type: "info" | "warning" | "success" | "alert"
       ticket_priority: "low" | "normal" | "high"
       ticket_status: "open" | "in_progress" | "closed"
@@ -496,7 +511,14 @@ export const Constants = {
     Enums: {
       app_role: ["admin", "user"],
       document_status: ["pending", "approved", "rejected"],
-      document_type: ["rg", "cnh", "address_proof", "payment_proof", "other"],
+      document_type: [
+        "rg",
+        "cnh",
+        "address_proof",
+        "payment_proof",
+        "other",
+        "selfie",
+      ],
       notif_type: ["info", "warning", "success", "alert"],
       ticket_priority: ["low", "normal", "high"],
       ticket_status: ["open", "in_progress", "closed"],

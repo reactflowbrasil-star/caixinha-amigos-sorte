@@ -136,63 +136,63 @@ function Dashboard() {
   return (
     <div className="min-h-screen flex flex-col bg-muted/30">
       <SiteHeader />
-      <main className="flex-1 container mx-auto px-4 py-8 md:py-12">
+      <main className="flex-1 container mx-auto px-3 sm:px-4 py-5 sm:py-8 md:py-12">
         {/* Boas-vindas */}
-        <div className="mb-8 flex flex-wrap items-end justify-between gap-3">
-          <div>
-            <p className="text-sm text-muted-foreground">Olá,</p>
-            <h1 className="text-3xl md:text-4xl font-extrabold">{profile.full_name} 👋</h1>
+        <div className="mb-5 sm:mb-8 flex flex-wrap items-end justify-between gap-3">
+          <div className="min-w-0">
+            <p className="text-xs sm:text-sm text-muted-foreground">Olá,</p>
+            <h1 className="text-xl sm:text-3xl md:text-4xl font-extrabold truncate">{profile.full_name} 👋</h1>
           </div>
           <Badge variant={profile.is_active ? "default" : "secondary"} className={profile.is_active ? "bg-primary" : ""}>
-            {profile.is_active ? "Participação ativa" : "Inativo"}
+            {profile.is_active ? "Ativo" : "Inativo"}
           </Badge>
         </div>
 
         {/* Cards principais */}
-        <div className="grid gap-4 md:grid-cols-4 mb-6">
-          <Card className="p-5 bg-gradient-hero text-primary-foreground border-0 shadow-elegant">
-            <HandCoins className="h-6 w-6 mb-3 opacity-90" />
-            <p className="text-xs opacity-80 uppercase tracking-wider font-semibold">Contribuição diária</p>
-            <p className="text-3xl font-extrabold mt-1">R$ {DAILY_AMOUNT},00</p>
+        <div className="grid gap-3 sm:gap-4 grid-cols-2 md:grid-cols-4 mb-5 sm:mb-6">
+          <Card className="p-4 sm:p-5 bg-gradient-hero text-primary-foreground border-0 shadow-elegant">
+            <HandCoins className="h-5 w-5 sm:h-6 sm:w-6 mb-2 sm:mb-3 opacity-90" />
+            <p className="text-[10px] sm:text-xs opacity-80 uppercase tracking-wider font-semibold">Diária</p>
+            <p className="text-xl sm:text-3xl font-extrabold mt-1">R$ {DAILY_AMOUNT},00</p>
           </Card>
 
-          <Card className="p-5 bg-gradient-card border-border/60 shadow-card">
-            <ListOrdered className="h-6 w-6 mb-3 text-primary" />
-            <p className="text-xs text-muted-foreground uppercase tracking-wider font-semibold">Sua posição</p>
-            <p className="text-3xl font-extrabold mt-1">
+          <Card className="p-4 sm:p-5 bg-gradient-card border-border/60 shadow-card">
+            <ListOrdered className="h-5 w-5 sm:h-6 sm:w-6 mb-2 sm:mb-3 text-primary" />
+            <p className="text-[10px] sm:text-xs text-muted-foreground uppercase tracking-wider font-semibold">Posição</p>
+            <p className="text-xl sm:text-3xl font-extrabold mt-1">
               {profile.receive_position ?? "—"}
-              {profile.receive_position && <span className="text-base text-muted-foreground font-normal">º</span>}
+              {profile.receive_position && <span className="text-sm sm:text-base text-muted-foreground font-normal">º</span>}
             </p>
-            <p className="text-xs text-muted-foreground mt-1">
-              {profile.receive_position ? "na ordem de recebimento" : "aguardando definição pelo admin"}
+            <p className="text-[10px] sm:text-xs text-muted-foreground mt-1 line-clamp-2">
+              {profile.receive_position ? "na ordem" : "aguardando admin"}
             </p>
           </Card>
 
-          <Card className="p-5 bg-gradient-card border-border/60 shadow-card">
-            <Users className="h-6 w-6 mb-3 text-primary" />
-            <p className="text-xs text-muted-foreground uppercase tracking-wider font-semibold">Participantes ativos</p>
-            <p className="text-3xl font-extrabold mt-1">{activeCount}</p>
+          <Card className="p-4 sm:p-5 bg-gradient-card border-border/60 shadow-card">
+            <Users className="h-5 w-5 sm:h-6 sm:w-6 mb-2 sm:mb-3 text-primary" />
+            <p className="text-[10px] sm:text-xs text-muted-foreground uppercase tracking-wider font-semibold">Ativos</p>
+            <p className="text-xl sm:text-3xl font-extrabold mt-1">{activeCount}</p>
           </Card>
 
-          <Card className="p-5 bg-secondary/40 border-secondary/60">
-            <TrendingUp className="h-6 w-6 mb-3 text-secondary-foreground" />
-            <p className="text-xs uppercase tracking-wider font-semibold opacity-80">Estimativa de recebimento</p>
-            <p className="text-3xl font-extrabold mt-1">R$ {estimatedReceive},00</p>
-            <p className="text-xs opacity-70 mt-1">se todos pagarem hoje</p>
+          <Card className="p-4 sm:p-5 bg-secondary/40 border-secondary/60">
+            <TrendingUp className="h-5 w-5 sm:h-6 sm:w-6 mb-2 sm:mb-3 text-secondary-foreground" />
+            <p className="text-[10px] sm:text-xs uppercase tracking-wider font-semibold opacity-80">Estimativa</p>
+            <p className="text-xl sm:text-3xl font-extrabold mt-1">R$ {estimatedReceive},00</p>
+            <p className="text-[10px] sm:text-xs opacity-70 mt-1">se todos pagarem</p>
           </Card>
         </div>
 
         {/* Pagamento + Convites */}
-        <div className="grid gap-6 lg:grid-cols-3 mb-6">
-          <Card className="lg:col-span-2 p-6 border-border/60 shadow-card">
-            <div className="flex items-start justify-between mb-4">
-              <div>
-                <h2 className="text-xl font-bold flex items-center gap-2">
-                  <Calendar className="h-5 w-5 text-primary" />
+        <div className="grid gap-4 sm:gap-6 lg:grid-cols-3 mb-5 sm:mb-6">
+          <Card className="lg:col-span-2 p-4 sm:p-6 border-border/60 shadow-card">
+            <div className="flex items-start justify-between mb-4 gap-2 flex-wrap">
+              <div className="min-w-0">
+                <h2 className="text-base sm:text-xl font-bold flex items-center gap-2">
+                  <Calendar className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
                   Contribuição de hoje
                 </h2>
-                <p className="text-sm text-muted-foreground mt-1">
-                  {new Date().toLocaleDateString("pt-BR", { dateStyle: "full" })}
+                <p className="text-xs sm:text-sm text-muted-foreground mt-1">
+                  {new Date().toLocaleDateString("pt-BR", { dateStyle: "long" })}
                 </p>
               </div>
               {paidToday ? (
@@ -203,7 +203,7 @@ function Dashboard() {
                   {paidToday.status === "confirmed" ? (
                     <><CheckCircle2 className="mr-1 h-3 w-3" /> Confirmado</>
                   ) : (
-                    <><Clock className="mr-1 h-3 w-3" /> Aguardando confirmação</>
+                    <><Clock className="mr-1 h-3 w-3" /> Aguardando</>
                   )}
                 </Badge>
               ) : (
@@ -211,11 +211,11 @@ function Dashboard() {
               )}
             </div>
 
-            <div className="rounded-xl bg-muted/60 p-4 mb-4">
+            <div className="rounded-xl bg-muted/60 p-3 sm:p-4 mb-4">
               <p className="text-xs text-muted-foreground mb-1">Chave Pix</p>
               <div className="flex items-center justify-between gap-2">
-                <code className="font-mono text-sm font-semibold">{PIX_KEY}</code>
-                <Button size="sm" variant="ghost" onClick={() => { navigator.clipboard.writeText(PIX_KEY); toast.success("Chave Pix copiada"); }}>
+                <code className="font-mono text-xs sm:text-sm font-semibold break-all">{PIX_KEY}</code>
+                <Button size="sm" variant="ghost" className="shrink-0" onClick={() => { navigator.clipboard.writeText(PIX_KEY); toast.success("Chave Pix copiada"); }}>
                   <Copy className="h-3.5 w-3.5" />
                 </Button>
               </div>
@@ -228,15 +228,15 @@ function Dashboard() {
               size="lg"
             >
               {paying ? <Loader2 className="h-4 w-4 animate-spin" /> : (
-                <><MessageCircle className="mr-2 h-4 w-4" /> Já paguei — Enviar comprovante no WhatsApp</>
+                <span className="flex items-center justify-center gap-2 text-sm sm:text-base"><MessageCircle className="h-4 w-4" /> <span className="truncate">Já paguei — enviar comprovante</span></span>
               )}
             </Button>
             <p className="mt-3 text-xs text-muted-foreground text-center">
-              Faça o Pix de R$5 e envie o comprovante. Um admin confirmará a contribuição.
+              Faça o Pix de R$5 e envie o comprovante. Um admin confirmará.
             </p>
           </Card>
 
-          <Card className="p-6 border-border/60 shadow-card">
+          <Card className="p-4 sm:p-6 border-border/60 shadow-card">
             <h2 className="text-xl font-bold flex items-center gap-2 mb-3">
               <Share2 className="h-5 w-5 text-primary" />
               Convide amigos
