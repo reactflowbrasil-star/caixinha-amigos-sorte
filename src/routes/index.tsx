@@ -21,12 +21,12 @@ function Index() {
           <div className="absolute -top-32 -right-32 h-96 w-96 rounded-full bg-secondary/40 blur-3xl" aria-hidden />
           <div className="absolute -bottom-32 -left-32 h-96 w-96 rounded-full bg-primary/30 blur-3xl" aria-hidden />
 
-          <div className="container relative mx-auto grid gap-10 px-4 py-16 md:grid-cols-2 md:py-24 md:gap-16 items-center">
-            <div className="space-y-6">
+          <div className="container relative mx-auto grid gap-8 px-4 py-10 sm:py-16 md:grid-cols-2 md:py-24 md:gap-16 items-center">
+            <div className="space-y-5 sm:space-y-6">
               <span className="inline-flex items-center gap-2 rounded-full bg-secondary/60 px-3 py-1 text-xs font-semibold text-secondary-foreground">
                 💰 Para grupos de amigos
               </span>
-              <h1 className="text-4xl md:text-6xl font-extrabold leading-[1.05]">
+              <h1 className="text-3xl sm:text-4xl md:text-6xl font-extrabold leading-[1.1]">
                 Organize dinheiro <br />
                 <span className="text-gradient">entre amigos</span>, <br />
                 de um jeito simples.
