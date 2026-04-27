@@ -3,6 +3,11 @@ import { routeTree } from "./routeTree.gen";
 
 function DefaultErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   const router = useRouter();
+  // Debug: always log the actual error so we can diagnose production issues
+  if (typeof window !== "undefined") {
+    // eslint-disable-next-line no-console
+    console.error("[Router Error]", error);
+  }
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
