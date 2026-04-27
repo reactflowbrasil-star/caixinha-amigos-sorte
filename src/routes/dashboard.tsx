@@ -184,15 +184,15 @@ function Dashboard() {
 
         {/* Pagamento + Convites */}
         <div className="grid gap-4 sm:gap-6 lg:grid-cols-3 mb-5 sm:mb-6">
-          <Card className="lg:col-span-2 p-6 border-border/60 shadow-card">
-            <div className="flex items-start justify-between mb-4">
-              <div>
-                <h2 className="text-xl font-bold flex items-center gap-2">
-                  <Calendar className="h-5 w-5 text-primary" />
+          <Card className="lg:col-span-2 p-4 sm:p-6 border-border/60 shadow-card">
+            <div className="flex items-start justify-between mb-4 gap-2 flex-wrap">
+              <div className="min-w-0">
+                <h2 className="text-base sm:text-xl font-bold flex items-center gap-2">
+                  <Calendar className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
                   Contribuição de hoje
                 </h2>
-                <p className="text-sm text-muted-foreground mt-1">
-                  {new Date().toLocaleDateString("pt-BR", { dateStyle: "full" })}
+                <p className="text-xs sm:text-sm text-muted-foreground mt-1">
+                  {new Date().toLocaleDateString("pt-BR", { dateStyle: "long" })}
                 </p>
               </div>
               {paidToday ? (
@@ -203,7 +203,7 @@ function Dashboard() {
                   {paidToday.status === "confirmed" ? (
                     <><CheckCircle2 className="mr-1 h-3 w-3" /> Confirmado</>
                   ) : (
-                    <><Clock className="mr-1 h-3 w-3" /> Aguardando confirmação</>
+                    <><Clock className="mr-1 h-3 w-3" /> Aguardando</>
                   )}
                 </Badge>
               ) : (
@@ -211,11 +211,11 @@ function Dashboard() {
               )}
             </div>
 
-            <div className="rounded-xl bg-muted/60 p-4 mb-4">
+            <div className="rounded-xl bg-muted/60 p-3 sm:p-4 mb-4">
               <p className="text-xs text-muted-foreground mb-1">Chave Pix</p>
               <div className="flex items-center justify-between gap-2">
-                <code className="font-mono text-sm font-semibold">{PIX_KEY}</code>
-                <Button size="sm" variant="ghost" onClick={() => { navigator.clipboard.writeText(PIX_KEY); toast.success("Chave Pix copiada"); }}>
+                <code className="font-mono text-xs sm:text-sm font-semibold break-all">{PIX_KEY}</code>
+                <Button size="sm" variant="ghost" className="shrink-0" onClick={() => { navigator.clipboard.writeText(PIX_KEY); toast.success("Chave Pix copiada"); }}>
                   <Copy className="h-3.5 w-3.5" />
                 </Button>
               </div>
@@ -228,15 +228,15 @@ function Dashboard() {
               size="lg"
             >
               {paying ? <Loader2 className="h-4 w-4 animate-spin" /> : (
-                <><MessageCircle className="mr-2 h-4 w-4" /> Já paguei — Enviar comprovante no WhatsApp</>
+                <span className="flex items-center justify-center gap-2 text-sm sm:text-base"><MessageCircle className="h-4 w-4" /> <span className="truncate">Já paguei — enviar comprovante</span></span>
               )}
             </Button>
             <p className="mt-3 text-xs text-muted-foreground text-center">
-              Faça o Pix de R$5 e envie o comprovante. Um admin confirmará a contribuição.
+              Faça o Pix de R$5 e envie o comprovante. Um admin confirmará.
             </p>
           </Card>
 
-          <Card className="p-6 border-border/60 shadow-card">
+          <Card className="p-4 sm:p-6 border-border/60 shadow-card">
             <h2 className="text-xl font-bold flex items-center gap-2 mb-3">
               <Share2 className="h-5 w-5 text-primary" />
               Convide amigos
