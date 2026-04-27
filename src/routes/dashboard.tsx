@@ -150,40 +150,40 @@ function Dashboard() {
 
         {/* Cards principais */}
         <div className="grid gap-3 sm:gap-4 grid-cols-2 md:grid-cols-4 mb-5 sm:mb-6">
-          <Card className="p-5 bg-gradient-hero text-primary-foreground border-0 shadow-elegant">
-            <HandCoins className="h-6 w-6 mb-3 opacity-90" />
-            <p className="text-xs opacity-80 uppercase tracking-wider font-semibold">Contribuição diária</p>
-            <p className="text-3xl font-extrabold mt-1">R$ {DAILY_AMOUNT},00</p>
+          <Card className="p-4 sm:p-5 bg-gradient-hero text-primary-foreground border-0 shadow-elegant">
+            <HandCoins className="h-5 w-5 sm:h-6 sm:w-6 mb-2 sm:mb-3 opacity-90" />
+            <p className="text-[10px] sm:text-xs opacity-80 uppercase tracking-wider font-semibold">Diária</p>
+            <p className="text-xl sm:text-3xl font-extrabold mt-1">R$ {DAILY_AMOUNT},00</p>
           </Card>
 
-          <Card className="p-5 bg-gradient-card border-border/60 shadow-card">
-            <ListOrdered className="h-6 w-6 mb-3 text-primary" />
-            <p className="text-xs text-muted-foreground uppercase tracking-wider font-semibold">Sua posição</p>
-            <p className="text-3xl font-extrabold mt-1">
+          <Card className="p-4 sm:p-5 bg-gradient-card border-border/60 shadow-card">
+            <ListOrdered className="h-5 w-5 sm:h-6 sm:w-6 mb-2 sm:mb-3 text-primary" />
+            <p className="text-[10px] sm:text-xs text-muted-foreground uppercase tracking-wider font-semibold">Posição</p>
+            <p className="text-xl sm:text-3xl font-extrabold mt-1">
               {profile.receive_position ?? "—"}
-              {profile.receive_position && <span className="text-base text-muted-foreground font-normal">º</span>}
+              {profile.receive_position && <span className="text-sm sm:text-base text-muted-foreground font-normal">º</span>}
             </p>
-            <p className="text-xs text-muted-foreground mt-1">
-              {profile.receive_position ? "na ordem de recebimento" : "aguardando definição pelo admin"}
+            <p className="text-[10px] sm:text-xs text-muted-foreground mt-1 line-clamp-2">
+              {profile.receive_position ? "na ordem" : "aguardando admin"}
             </p>
           </Card>
 
-          <Card className="p-5 bg-gradient-card border-border/60 shadow-card">
-            <Users className="h-6 w-6 mb-3 text-primary" />
-            <p className="text-xs text-muted-foreground uppercase tracking-wider font-semibold">Participantes ativos</p>
-            <p className="text-3xl font-extrabold mt-1">{activeCount}</p>
+          <Card className="p-4 sm:p-5 bg-gradient-card border-border/60 shadow-card">
+            <Users className="h-5 w-5 sm:h-6 sm:w-6 mb-2 sm:mb-3 text-primary" />
+            <p className="text-[10px] sm:text-xs text-muted-foreground uppercase tracking-wider font-semibold">Ativos</p>
+            <p className="text-xl sm:text-3xl font-extrabold mt-1">{activeCount}</p>
           </Card>
 
-          <Card className="p-5 bg-secondary/40 border-secondary/60">
-            <TrendingUp className="h-6 w-6 mb-3 text-secondary-foreground" />
-            <p className="text-xs uppercase tracking-wider font-semibold opacity-80">Estimativa de recebimento</p>
-            <p className="text-3xl font-extrabold mt-1">R$ {estimatedReceive},00</p>
-            <p className="text-xs opacity-70 mt-1">se todos pagarem hoje</p>
+          <Card className="p-4 sm:p-5 bg-secondary/40 border-secondary/60">
+            <TrendingUp className="h-5 w-5 sm:h-6 sm:w-6 mb-2 sm:mb-3 text-secondary-foreground" />
+            <p className="text-[10px] sm:text-xs uppercase tracking-wider font-semibold opacity-80">Estimativa</p>
+            <p className="text-xl sm:text-3xl font-extrabold mt-1">R$ {estimatedReceive},00</p>
+            <p className="text-[10px] sm:text-xs opacity-70 mt-1">se todos pagarem</p>
           </Card>
         </div>
 
         {/* Pagamento + Convites */}
-        <div className="grid gap-6 lg:grid-cols-3 mb-6">
+        <div className="grid gap-4 sm:gap-6 lg:grid-cols-3 mb-5 sm:mb-6">
           <Card className="lg:col-span-2 p-6 border-border/60 shadow-card">
             <div className="flex items-start justify-between mb-4">
               <div>
