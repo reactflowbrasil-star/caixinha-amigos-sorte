@@ -136,20 +136,20 @@ function Dashboard() {
   return (
     <div className="min-h-screen flex flex-col bg-muted/30">
       <SiteHeader />
-      <main className="flex-1 container mx-auto px-4 py-8 md:py-12">
+      <main className="flex-1 container mx-auto px-3 sm:px-4 py-5 sm:py-8 md:py-12">
         {/* Boas-vindas */}
-        <div className="mb-8 flex flex-wrap items-end justify-between gap-3">
-          <div>
-            <p className="text-sm text-muted-foreground">Olá,</p>
-            <h1 className="text-3xl md:text-4xl font-extrabold">{profile.full_name} 👋</h1>
+        <div className="mb-5 sm:mb-8 flex flex-wrap items-end justify-between gap-3">
+          <div className="min-w-0">
+            <p className="text-xs sm:text-sm text-muted-foreground">Olá,</p>
+            <h1 className="text-xl sm:text-3xl md:text-4xl font-extrabold truncate">{profile.full_name} 👋</h1>
           </div>
           <Badge variant={profile.is_active ? "default" : "secondary"} className={profile.is_active ? "bg-primary" : ""}>
-            {profile.is_active ? "Participação ativa" : "Inativo"}
+            {profile.is_active ? "Ativo" : "Inativo"}
           </Badge>
         </div>
 
         {/* Cards principais */}
-        <div className="grid gap-4 md:grid-cols-4 mb-6">
+        <div className="grid gap-3 sm:gap-4 grid-cols-2 md:grid-cols-4 mb-5 sm:mb-6">
           <Card className="p-5 bg-gradient-hero text-primary-foreground border-0 shadow-elegant">
             <HandCoins className="h-6 w-6 mb-3 opacity-90" />
             <p className="text-xs opacity-80 uppercase tracking-wider font-semibold">Contribuição diária</p>
