@@ -62,10 +62,10 @@ function AdminLayout() {
               <SidebarContents />
             </SheetContent>
           </Sheet>
-          <p className="font-display font-bold">Painel Admin</p>
-          <div className="ml-auto flex items-center gap-2">
+          <p className="font-display font-bold text-sm sm:text-base truncate">Painel Admin</p>
+          <div className="ml-auto flex items-center gap-1 sm:gap-2">
             <NotificationBell />
-            <Button variant="ghost" size="sm" onClick={() => navigate({ to: "/dashboard" })}>
+            <Button variant="ghost" size="sm" className="hidden sm:inline-flex" onClick={() => navigate({ to: "/dashboard" })}>
               Meu painel
             </Button>
             <Button variant="outline" size="icon" onClick={async () => { await signOut(); navigate({ to: "/" }); }}>
