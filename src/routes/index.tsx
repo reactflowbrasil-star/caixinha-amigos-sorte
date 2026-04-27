@@ -31,7 +31,7 @@ function Index() {
                 <span className="text-gradient">entre amigos</span>, <br />
                 de um jeito simples.
               </h1>
-              <p className="text-lg text-muted-foreground max-w-lg">
+              <p className="text-base sm:text-lg text-muted-foreground max-w-lg">
                 A Caixinha de Amigos Eldorado é uma plataforma para grupos fechados se organizarem.
                 Cada participante contribui com <strong className="text-foreground">R$5 por dia</strong> e,
                 quando chega sua vez na ordem, recebe o valor total arrecadado naquele dia.
@@ -66,10 +66,10 @@ function Index() {
         </section>
 
         {/* COMO FUNCIONA */}
-        <section id="como-funciona" className="container mx-auto px-4 py-20">
-          <div className="max-w-2xl mb-12">
-            <p className="text-sm font-bold uppercase tracking-wider text-primary mb-3">Como funciona</p>
-            <h2 className="text-3xl md:text-5xl font-extrabold">Três passos. Sem mistério.</h2>
+        <section id="como-funciona" className="container mx-auto px-4 py-12 sm:py-20">
+          <div className="max-w-2xl mb-8 sm:mb-12">
+            <p className="text-xs sm:text-sm font-bold uppercase tracking-wider text-primary mb-3">Como funciona</p>
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-extrabold">Três passos. Sem mistério.</h2>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
             {[
@@ -93,11 +93,11 @@ function Index() {
 
         {/* REGRAS */}
         <section id="regras" className="bg-muted/40 border-y border-border/60">
-          <div className="container mx-auto px-4 py-20 grid md:grid-cols-2 gap-12 items-center">
+          <div className="container mx-auto px-4 py-12 sm:py-20 grid md:grid-cols-2 gap-8 md:gap-12 items-center">
             <div>
-              <p className="text-sm font-bold uppercase tracking-wider text-accent mb-3">Regras claras</p>
-              <h2 className="text-3xl md:text-5xl font-extrabold mb-6">A caixinha funciona com compromisso coletivo.</h2>
-              <p className="text-muted-foreground text-lg">
+              <p className="text-xs sm:text-sm font-bold uppercase tracking-wider text-accent mb-3">Regras claras</p>
+              <h2 className="text-2xl sm:text-3xl md:text-5xl font-extrabold mb-4 sm:mb-6">A caixinha funciona com compromisso coletivo.</h2>
+              <p className="text-muted-foreground text-base sm:text-lg">
                 Quanto mais participantes ativos, maior o valor que cada um recebe na sua vez.
                 Mas quando alguém deixa de pagar, todo o grupo é afetado.
               </p>
@@ -123,7 +123,7 @@ function Index() {
         </section>
 
         {/* TRANSPARÊNCIA */}
-        <section id="transparencia" className="container mx-auto px-4 py-20">
+        <section id="transparencia" className="container mx-auto px-4 py-12 sm:py-20">
           <div className="grid md:grid-cols-3 gap-6">
             <Card className="p-6 md:col-span-2 bg-gradient-hero text-primary-foreground border-0 shadow-elegant">
               <Eye className="h-8 w-8 mb-4 opacity-90" />
@@ -158,10 +158,10 @@ function Index() {
         </section>
 
         {/* CTA */}
-        <section className="container mx-auto px-4 pb-24">
-          <Card className="p-10 md:p-16 text-center bg-gradient-warm border-0 shadow-elegant">
-            <h2 className="text-3xl md:text-5xl font-extrabold mb-4">Pronto para entrar na sua caixinha?</h2>
-            <p className="text-lg text-foreground/80 max-w-xl mx-auto mb-8">
+        <section className="container mx-auto px-4 pb-16 sm:pb-24">
+          <Card className="p-6 sm:p-10 md:p-16 text-center bg-gradient-warm border-0 shadow-elegant">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-extrabold mb-3 sm:mb-4">Pronto para entrar na sua caixinha?</h2>
+            <p className="text-base sm:text-lg text-foreground/80 max-w-xl mx-auto mb-6 sm:mb-8">
               Cadastre-se, aceite os termos e comece a participar com seu grupo de amigos.
             </p>
             <Link to="/auth" search={{ mode: "signup" } as any}>
